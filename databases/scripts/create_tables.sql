@@ -1,3 +1,23 @@
+--create M_Account table
+drop table if exists m_account cascade;
+CREATE TABLE IF NOT EXISTS m_account (
+    id SERIAL not NULL,
+    account_name VARCHAR(50) NOT NULL,
+    password VARCHAR(50) not NULL,
+    first_name VARCHAR(50) not NULL,
+    last_name VARCHAR(1000) not NULL,
+	dob date,
+	gender varchar(1),
+	address VARCHAR(1000),
+    phone VARCHAR(20) NULL,
+    email VARCHAR(50) NULL,
+    account_type VARCHAR(20) NULL,
+    token VARCHAR(100) NULL,
+    create_date timestamp not null DEFAULT now(),
+    modify_date timestamp not null DEFAULT now(),
+    constraint pk_account primary key (id)
+);
+
 --create m_hospital table
 drop table if exists m_hospital cascade;
 CREATE TABLE IF NOT EXISTS m_hospital (
@@ -12,6 +32,20 @@ CREATE TABLE IF NOT EXISTS m_hospital (
     modify_date timestamp not null DEFAULT now(),
     constraint pk_hospital primary key (id)
 );
+--create m_Doctor table
+drop table if exists m_doctor cascade;
+CREATE TABLE IF NOT EXISTS m_doctor (
+    id SERIAL not NULL,
+    name VARCHAR(50) NOT NULL,
+    gender VARCHAR(1) NULL,
+    quanlification VARCHAR(50) NULL,
+    job_specification VARCHAR(1000) NULL,
+    hosp_id int NULL,
+    create_date timestamp not null DEFAULT now(),
+    modify_date timestamp not null DEFAULT now(),
+    constraint pk_doctor primary key (id),
+    constraint fk_doctor_hospital foreign key (hosp_id) references m_hospital(id)
+);
 
 --create M_Department table
 drop table if exists m_department cascade;
@@ -19,11 +53,13 @@ CREATE TABLE IF NOT EXISTS m_department (
     id SERIAL not null,
     name VARCHAR(50) NOT NULL,
     phone VARCHAR(20) NULL,
+    doctor_id int NULL,
     hosp_id int NULL,
     create_date timestamp not null DEFAULT now(),
     modify_date timestamp not null DEFAULT now(),
     constraint pk_department primary key (id),
-    constraint fk_hospital_department foreign key(hosp_id) references m_hospital(id)
+    constraint fk_department_hospital foreign key(hosp_id) references m_hospital(id),
+    constraint fk_department_doctor foreign key(hosp_id) references m_doctor(id)
 );
 
 --create M_Patient table
@@ -73,11 +109,13 @@ CREATE TABLE IF NOT EXISTS h_appointment(
     id SERIAL not null,
     appoint_date date not null,
 	patient_id int,
+	doctor_id int,
 	status VARCHAR(50),
     create_date timestamp not null DEFAULT now(),
     modify_date timestamp not null DEFAULT now(),
     constraint pk_appointment primary key (id),
-    constraint fk_patient_appointment foreign key(patient_id) references m_patient (id)
+    constraint fk_appointment_patient foreign key(patient_id) references m_patient (id),
+    constraint fk_appointment_doctor foreign key(doctor_id) references m_doctor (id)
 );
 
 --create H_Examination table
@@ -91,17 +129,19 @@ CREATE TABLE IF NOT EXISTS h_examination(
 );
 
 --create H_Billing table
-drop table if exists h_billing;
+drop table if exists h_billing cascade;
 CREATE TABLE IF NOT EXISTS h_billing(
 	id serial not null,
 	billing_date date not null,
 	patient_id int,
+	doctor_id int,
 	medicine_id int,
 	quantity int,
 	amount numeric(19,6),
 	duration int,
 	dosage_per_day int,
     constraint pk_billing primary key (id),
-    constraint fk_patient_billing foreign key(patient_id) references m_patient (id),
-    constraint fk_medicine_billing foreign key(medicine_id) references m_medicine (id)
+    constraint fk_billing_patient foreign key(patient_id) references m_patient (id),
+    constraint fk_billing_medicine foreign key(medicine_id) references m_medicine (id),
+    constraint fk_billing_doctor foreign key(doctor_id) references m_doctor (id)
 );
