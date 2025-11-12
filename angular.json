@@ -11,11 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:browser",
+          "builder": "@angular/build:application",
           "options": {
-            "dist": "dist",
+            "outputPath": "dist/medicalcare",
+            "browser": "src/main.ts",
             "index": "src/index.html",
-            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
