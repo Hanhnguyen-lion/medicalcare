@@ -1,0 +1,6 @@
+-- add package EF
+dotnet add package Microsoft.EntityFrameworkCore
+
+-- add postgresSql
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+
