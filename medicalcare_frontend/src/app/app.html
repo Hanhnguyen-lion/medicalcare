@@ -8,6 +8,12 @@
                             <a class="nav-link" routerLink="/">Home</a>
                         </li>
                         <li *ngIf="isAuthenticate()" class="nav-item">
+                            <a class="nav-link" routerLink ="/Patient">Patient</a>
+                        </li>
+                        <li *ngIf="isAuthenticate()" class="nav-item">
+                            <a class="nav-link" routerLink ="/Billing">Billing</a>
+                        </li>
+                        <li *ngIf="isAuthenticate()" class="nav-item">
                             <a class="nav-link" (click)="logout()" href="">Logout</a>
                         </li>
                     </ul>
