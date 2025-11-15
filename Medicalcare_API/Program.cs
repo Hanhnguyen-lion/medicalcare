@@ -12,7 +12,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<DataContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("MedicalCareConnectionDb")));
-
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 builder.Services.AddCors(options =>
     options.AddPolicy(APICors, policy=>
     {

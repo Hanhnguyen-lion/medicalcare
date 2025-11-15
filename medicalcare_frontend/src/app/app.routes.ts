@@ -1,39 +1,27 @@
 import { Routes } from '@angular/router';
 import { Home } from './home/home';
-import { Patient } from './patient/patient';
-import { Login } from './login/login';
-import { Register } from './register/register';
-import { CreatePatient } from './patient/create-patient';
-import { EditPatient } from './patient/edit-patient';
-import { ViewPatient } from './patient/view-patient';
+import { AuthGuard } from './helpers/auth-guard';
+import { Login } from './account/login';
+import { Register } from './account/register';
+import { ForgotPassword } from './account/forgot-password';
 
 export const routes: Routes = [
     {
         path: "",
-        component: Home
+        component: Home,
+        canActivate:[AuthGuard]
     },
     {
-        path: "Patient",
-        component: Patient
-    },
-    {
-        path: "Login",
+        path: "Account/Login",
         component: Login
     },
     {
-        path: "Register",
+        path: "Account/Register",
         component: Register
     },
     {
-        path: "Patient/Add",
-        component: CreatePatient
+        path: "Account/Forgotpassword",
+        component: ForgotPassword
     },
-    {
-        path: "Patient/edit",
-        component: EditPatient
-    },
-    {
-        path: "Patient/View",
-        component: ViewPatient
-    }
+    { path: '**', redirectTo: '' }
 ];

@@ -1,8 +1,14 @@
 --create M_Account table
+/*
+	drop account_name column 
+	set not null email column
+	Modify Date: 11/14/2025
+	Modify By: Hanh
+*/
 drop table if exists m_account cascade;
 CREATE TABLE IF NOT EXISTS m_account (
     id SERIAL not NULL,
-    account_name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
     password VARCHAR(50) not NULL,
     first_name VARCHAR(50) not NULL,
     last_name VARCHAR(1000) not NULL,
@@ -10,7 +16,6 @@ CREATE TABLE IF NOT EXISTS m_account (
 	gender varchar(1),
 	address VARCHAR(1000),
     phone VARCHAR(20) NULL,
-    email VARCHAR(50) NULL,
     account_type VARCHAR(20) NULL,
     token VARCHAR(100) NULL,
     create_date timestamp not null DEFAULT now(),

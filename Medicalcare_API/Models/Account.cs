@@ -9,7 +9,7 @@ namespace Medicalcare_API.Models{
 
         [Required]
         [MaxLength(50)]
-        public string? account_name{get;set;}
+        public string? email{get;set;}
 
         [Required]
         [MaxLength(50)]
@@ -24,7 +24,7 @@ namespace Medicalcare_API.Models{
         [MaxLength(50)]
         public string? last_name{get;set;}
 
-        public DateTime dob{get;set;}
+        public DateTime? dob{get;set;}
         
 
         public string? gender{get;set;}
@@ -33,10 +33,6 @@ namespace Medicalcare_API.Models{
         
 
         public string? phone{get;set;}
-
-        [Required]
-        [MaxLength(50)]
-        public string? email{get;set;}
 
         public string? account_type{get;set;}
 

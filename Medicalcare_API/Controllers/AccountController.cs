@@ -8,11 +8,11 @@ using Medicalcare_API.Models;
 namespace Medicalcare_API.Controllers{
 
     [ApiController]
-    [Route("api/[controller]")]
-    public class AccountController: ControllerBase{
+    [Route("Medicalcare/api/[controller]")]
+    public class AccountsController: ControllerBase{
         readonly DataContext context;
 
-        public AccountController(DataContext context){
+        public AccountsController(DataContext context){
             this.context = context;
         }
  
@@ -34,7 +34,7 @@ namespace Medicalcare_API.Controllers{
             {
                 return BadRequest(ModelState);
             }
-            string? email = registerDto?.Email?.ToLower();
+            string? email = registerDto?.email?.ToLower();
             // Check if the email already exists.
             Account? item = await this.context.m_account.FirstOrDefaultAsync(m => m.email == email);
             if (item != null)
@@ -45,11 +45,13 @@ namespace Medicalcare_API.Controllers{
             // Create a new user entity.
             var newAccount = new Account
             {
-                first_name = registerDto?.Firstname,
-                last_name = registerDto?.Lastname,
                 email = email,
-                password = registerDto?.Password,
-                account_name = registerDto?.Accountname
+                first_name = registerDto?.first_name,
+                last_name = registerDto?.last_name,
+                password = registerDto?.password,
+                dob = registerDto?.dob,
+                gender = registerDto?.gender,
+                account_type = registerDto?.account_type
             };
 
             await Task.Run(() =>
@@ -58,6 +60,29 @@ namespace Medicalcare_API.Controllers{
                 this.context.SaveChanges();
             });
             return Ok(new { message = "User registered successfully." });
+        }        
+
+        [HttpPost]
+        [Route("Authenticate")]
+        public async Task<IActionResult> Authenticate(AuthenticateDTO authenticateDto)
+        {
+            // Validate the incoming model.
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            string? email = authenticateDto?.email?.ToLower();
+            string? password = authenticateDto?.password;
+            // Check if the email already exists.
+            Account? item = await this.context.m_account.FirstOrDefaultAsync(
+                    m => m.email == email &&
+                    m.password == password);
+            if (item == null)
+            {
+                return NotFound(new { message = "Email or password is incorrect." });
+            }
+
+            return Ok(item);
         }        
     }
 }
