@@ -2,7 +2,12 @@ html {
   font-size: 14px;
   /* font-family: "Roboto", sans-serif; */
 }
-
+.image{
+    background-size:cover; width:auto;
+    background-image:url('/images/image.jpg');
+    background-position:50% 50%;
+    position: relative;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;

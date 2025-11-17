@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-billing',
   imports: [],
   templateUrl: './billing.html',
-  styleUrl: './billing.css',
+  styleUrl: './billing.css'
 })
-export class Billing {
+export class Billing{
 
   printInvoice() {
     var printContents = document.getElementById('billing')?.innerHTML;
@@ -14,6 +14,7 @@ export class Billing {
     if (popupWin){
       popupWin.document.open();
       popupWin.document.write(`<html><head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/><style></style> </head><body onload="window.print();window.close()">${printContents}</body></html>`);
+      // popupWin.document.write(`<html><head><style>${this.styleSheet}</style></head><body onload="window.print();window.close();">${printContents}</body></html>`);
       popupWin.document.title = 'Medical Billing';
       popupWin.document.close();
     }
