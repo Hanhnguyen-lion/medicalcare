@@ -8,6 +8,7 @@ import { Patient } from './patient/patient';
 import { EditPatient } from './patient/edit-patient';
 import { CreatePatient } from './patient/create-patient';
 import { Billing } from './billing/billing';
+import { MedicalRecords } from './medical-records/medical-records';
 
 export const routes: Routes = [
     {
@@ -42,6 +43,10 @@ export const routes: Routes = [
     {
         path: "Billing",
         component: Billing
+    },
+    {
+        path: "MedicalRecords",
+        component: MedicalRecords
     },
     { path: '**', redirectTo: '' }
 ];
