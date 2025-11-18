@@ -4,6 +4,14 @@
 	set not null email column
 	Modify Date: 11/14/2025
 	Modify By: Hanh
+	
+	Modify Date: 11/18/2025
+	Modify By: Hanh
+	Description: 
+		1) Change m_patient table
+		2) Add medicalRecord table
+		3) Add prescription table
+	
 */
 drop table if exists m_account cascade;
 CREATE TABLE IF NOT EXISTS m_account (
@@ -94,7 +102,7 @@ CREATE TABLE IF NOT EXISTS m_medicine(
 	type VARCHAR(50),
 	price numeric(19, 6),
 	input_date date not null,
-	exp_date date not null,
+	expire_date date not null,
     constraint pk_medicine primary key (id)
 );
 
