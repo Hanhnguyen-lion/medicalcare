@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "thrM7YJQEfI=",
+  "dgSpecHash": "loif+yxD9B8=",
   "success": true,
-  "projectFilePath": "/data/projects/Healthcare/Medicalcare_API/Medicalcare_API.csproj",
+  "projectFilePath": "/data/projects/healthcare/Medicalcare_API/Medicalcare_API.csproj",
   "expectedPackageFiles": [
     "/home/hnguyen/.nuget/packages/microsoft.aspnetcore.openapi/9.0.10/microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
     "/home/hnguyen/.nuget/packages/microsoft.entityframeworkcore/9.0.0/microsoft.entityframeworkcore.9.0.0.nupkg.sha512",

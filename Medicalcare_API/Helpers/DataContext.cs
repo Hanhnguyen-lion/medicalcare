@@ -9,5 +9,6 @@ namespace Medicalcare_API.Helpers{
         }
 
         public DbSet<Account> m_account{get;set;}
+        public DbSet<Patient> m_patient{get;set;}
     }
 }

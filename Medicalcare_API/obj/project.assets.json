@@ -843,11 +843,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/data/projects/Healthcare/Medicalcare_API/Medicalcare_API.csproj",
+      "projectUniqueName": "/data/projects/healthcare/Medicalcare_API/Medicalcare_API.csproj",
       "projectName": "Medicalcare_API",
-      "projectPath": "/data/projects/Healthcare/Medicalcare_API/Medicalcare_API.csproj",
+      "projectPath": "/data/projects/healthcare/Medicalcare_API/Medicalcare_API.csproj",
       "packagesPath": "/home/hnguyen/.nuget/packages/",
-      "outputPath": "/data/projects/Healthcare/Medicalcare_API/obj/",
+      "outputPath": "/data/projects/healthcare/Medicalcare_API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/hnguyen/.nuget/NuGet/NuGet.Config"

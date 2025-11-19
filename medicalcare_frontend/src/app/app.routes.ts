@@ -4,11 +4,12 @@ import { AuthGuard } from './helpers/auth-guard';
 import { Login } from './account/login';
 import { Register } from './account/register';
 import { ForgotPassword } from './account/forgot-password';
-import { Patient } from './patient/patient';
+import { PatientComponent } from './patient/patient';
 import { EditPatient } from './patient/edit-patient';
 import { CreatePatient } from './patient/create-patient';
 import { Billing } from './billing/billing';
 import { MedicalRecords } from './medical-records/medical-records';
+import { ViewPatient } from './patient/view-patient';
 
 export const routes: Routes = [
     {
@@ -30,11 +31,15 @@ export const routes: Routes = [
     },
     {
         path: "Patient",
-        component: Patient
+        component: PatientComponent
     },
     {
-        path: "Patient/Edit",
+        path: "Patient/Edit/:id",
         component: EditPatient
+    },
+    {
+        path: "Patient/View/:id",
+        component: ViewPatient
     },
     {
         path: "Patient/Add",
@@ -45,7 +50,7 @@ export const routes: Routes = [
         component: Billing
     },
     {
-        path: "MedicalRecords",
+        path: "MedicalCare",
         component: MedicalRecords
     },
     { path: '**', redirectTo: '' }
